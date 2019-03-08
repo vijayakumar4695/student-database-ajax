@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>INDEX</title>
+<meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <style>
+ .container-fluid{
+ 	height: 600px;
+ }
+ 	.container{
+
+       border:4px solid black;
+       border-radius: 20px;
+ 	}
+ 	h2 {
+
+ 		border:2px solid black;
+ 		border-radius: 20px;
+ 		border-left-width: 50px;
+ 		border-right-width: 50px;
+ 		background:orange;
+ 		font-family: roboto; 
+
+ 	}
+ </style>
+</head>
+<body>
+	<div class="container-fluid bg-success">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+				<br>
+				<br>
+
+				<h2>LOGIN</h2>
+			</div>
+		</div>
+	
+	<br>
+	<br>
+	
+	<div class="container text-center btn-danger">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+              <form class="form-inline">
+             <div class="form-group">
+             	       <br>
+                         <label for="email">Enter Your Email :</label>
+                         <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                      </div><br><br>
+                      <div class="form-group">
+                          <label for="pwd"> Enter a Password :</label>
+                          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                      </div><br><br>
+                      <br>
+                      <br>
+                      <button type="button" id="regis"class="btn btn-success">LOGIN</button>&nbsp &nbsp <a href="register.html"><button type="button" id="regis"class="btn btn-success">SIGNUP</button></a>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+   <script>
+     var list="";
+     var q="";
+     var p="";
+	var request=$.ajax({
+	type:"GET",
+	url:"https://5c8205572d2ad30014be5098.mockapi.io/api/v1/register", 
+    datatype:"json",
+
+    success:function(result){
+
+    	list=result;
+    	console.log(list)
+
+    	for (var i=0;i<list.length;i++)
+    	{
+    	    q=list[i].email;
+    	   console.log(q);
+
+    	    p=list[i].password;
+    	   console.log(p);
+    	}
+	
+    }
+
+
+});
+
+	$("button").click(function(){
+		 var email=$("#email").val();
+             var password=$("#pwd").val();
+            console.log(email)
+            console.log(password)
+
+            if(q!=email || p!=password){
+            	alert("your mail id or password mismatch");
+            }
+           else{
+           	 location.replace("Data Entry.html")
+           }
+	});
+</script>
+</body>
+</html>

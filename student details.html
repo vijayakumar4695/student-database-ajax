@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>student details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  	th{
+  		text-align: center;
+  		color:purple;
+  		font-size: 18px;
+  	}
+  	#body{
+  		color:white;
+  		font-size: 20px;
+  	}
+  	h2{
+  		color:white;
+  	}
+  </style>
+</head>
+<body background="images/table.jpg">
+	<div class="container-fluid text-center bg-dark">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<h2>STUDENT DATABASE DETAILS</h2>
+			</div>
+		</div>
+
+
+<div class="row">
+ <div class="col-lg-12 col-md-12 colsm-12">
+ 	
+ 	
+ 	<table class="table" border="4">
+	<thead>
+		<th>STUDENT NAME</th>
+		<th>ROLL.NO</th>
+		<th>REG.NO</th>
+		<th>CLASS</th>
+		<th>B.GROUP</th>
+		<th>MOBILE.NO</th>
+		<th>AGE</th>
+		<th>DOB</th>
+		<th>AADHAR.NO</th>
+
+		
+		
+	</thead>
+
+	<tbody id="body">
+		
+	</tbody>
+</table>
+
+
+<a href="Data Entry.html"><button type="button" class="btn btn-success">ADD</button></a>
+</div>
+</div>
+</div>
+
+
+
+<script>
+	var list="";
+	var request=$.ajax({
+	type:"GET",
+	url:"https://5c8205572d2ad30014be5098.mockapi.io/api/v1/database", 
+    datatype:"json",
+
+    success:function(result)
+    {
+    	list=result; 
+    	var text="";   	
+    	for (var i=0;i<list.length;i++)
+
+         {
+
+     $("#body").append("<tr><td>"+list[i].name+"</td>"+"<td>"+list[i].rno+"</td>"+"<td>"+list[i].regno+"</td>"+"<td>"+list[i].class+"</td>"+"<td>"+list[i].bgroup+"</td>"+"<td>"+list[i].mobile+"</td>"+"<td>"+list[i].age+"</td>"+"<td>"+list[i].dob+"</td>"+"<td>"+list[i].aadhar+"</td></tr>");
+}
+}
+   
+});
+</script>
+</body>
+
+</html>
